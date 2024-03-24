@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script defer src="./script.js"></script>
+</head>
+
+<body>
+    <div class="page">
+        <div class="search-container">
+            <input id="searchInput" class="searchStyle" type="text" placeholder="Поиск по сайтам..." />
+            <button id="searchButton" class="searchStyle" onclick="searchSites()">Поиск</button>
+        </div>
+        <div id="categories"></div>
+        <div id="sites"></div>
+        <div class="addSite">
+            <input id="addSiteInputName" class="input-style" type="text" placeholder="Название сайта">
+            <input id="addSiteInputLink" class="input-style" type="text" placeholder="Ссылка на сайт">
+            <select  id="addSiteSelect" class="input-style">
+                <option value="Наука">Наука</option>
+                <option value="Развлечения">Развлечения</option>
+                <option value="Образование">Образование</option>
+            </select>
+            <button id="addButton" class="searchStyle">Добавить</button>
+        </div>
+    </div>
+</body>
+
+</html>
