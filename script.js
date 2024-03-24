@@ -93,6 +93,7 @@ function showSite(siteArr) {
     })
 }
 
+// Функция - Поставить лайк
 function likeFunc(button, likeCount, site) {
     button.addEventListener('click', function() {
         site.like++;
