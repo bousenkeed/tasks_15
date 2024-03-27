@@ -39,15 +39,20 @@ body {
 }
 
 #searchButton {
-    background: rgb(255 239 0);
+    background: rgb(255, 238, 0);
     width: 100px;
-    border: 1px solid rgb(240 240 234);
     cursor: pointer;
     border: 1px solid rgb(199, 193, 193);
+    transition: 0.1s;
 }
 
 #searchButton:hover {
-    background: rgb(255, 253, 220);
+    background: rgb(252, 252, 252);
+    box-shadow: 1px 1px 4px 1px;
+}
+
+#searchButton:active {
+    background: rgb(255, 238, 0);
 }
 
 #categories {
@@ -120,15 +125,20 @@ body {
 }
 
 #addButton {
-    background: rgb(255 239 0);
+    background: #efefef;
     width: 100px;
-    border: 1px solid rgb(240 240 234);
     cursor: pointer;
     border: 1px solid rgb(199, 193, 193);
+    transition: 0.1s;
 }
 
 #addButton:hover {
-    background: rgb(255, 253, 220);
+    background: rgb(255, 242, 0);
+    box-shadow: 1px 1px 4px 1px;
+}
+
+#addButton:active {
+    background: #efefef;
 }
 
 .like {

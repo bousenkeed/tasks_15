@@ -10,7 +10,19 @@ const sites = [
         link: "https://www.nature.com",
         category: "Наука",
         like: 0
-    },
+    }, 
+    {
+        name: 'Space',
+        link: "https://www.space.com/",
+        category: "Наука",
+        like: 0
+    }, 
+    {
+        name: 'Popsci',
+        link: "https://www.popsci.com/",
+        category: "Наука",
+        like: 0
+    }, 
     {
         name: 'YouTube',
         link: "https://www.youtube.com/",
@@ -110,11 +122,6 @@ function displaySites(button, siteArr) {
     })
 }
 
-// Функция проверки наличия сайта
-function siteAdded() {
-    return sites.some(site => site.name.toUpperCase() === addSiteInputName.value.toUpperCase());
-}
-
 // Функция уведомления
 
 function alertFunc(alert) {
@@ -128,9 +135,16 @@ function alertFunc(alert) {
     sitesDiv.append(siteContainer);
 }
 
+// Функция проверки наличия сайта
+function siteAdded() {
+    return sites.some(site => 
+        site.name.toUpperCase() === addSiteInputName.value.toUpperCase() ||
+        site.link.toUpperCase() == addSiteInputLink.value.toUpperCase());
+}
+
 // Функция добавления сайта
 addButton.addEventListener('click', function () {
-    if (addSiteInputName.value && addSiteInputLink.value && !siteAdded()) {
+    if (addSiteInputName.value && addSiteInputLink.value && !siteAdded()) { 
         const newSite = {};
         newSite.name = addSiteInputName.value;
         newSite.link = addSiteInputLink.value;
@@ -140,8 +154,8 @@ addButton.addEventListener('click', function () {
         sitesDiv.innerHTML = '';
         const filteredSites = sites.filter(obj => obj.category === newSite.category);
         showSite(filteredSites);
-    } else if (addSiteInputName.value && addSiteInputLink.value && siteAdded) {
-        alertFunc('Такой сайте уже есть!')
+    } else if (addSiteInputName.value && addSiteInputLink.value && siteAdded()) {
+        alertFunc('Такой сайте уже добавлен!')
     }
     addSiteInputName.value = '';
     addSiteInputLink.value = '';
