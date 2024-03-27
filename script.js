@@ -83,7 +83,7 @@ function showSite(siteArr) {
         const like = document.createElement('img');
         like.src = './like.jpeg';
         like.className = 'like';
-        
+
         const likeCount = document.createElement('p');
         likeCount.textContent = site.like;
         likeFunc(like, likeCount, site);
@@ -95,7 +95,7 @@ function showSite(siteArr) {
 
 // Функция - Поставить лайк
 function likeFunc(button, likeCount, site) {
-    button.addEventListener('click', function() {
+    button.addEventListener('click', function () {
         site.like++;
         likeCount.textContent = site.like;
     })
@@ -110,9 +110,27 @@ function displaySites(button, siteArr) {
     })
 }
 
+// Функция проверки наличия сайта
+function siteAdded() {
+    return sites.some(site => site.name.toUpperCase() === addSiteInputName.value.toUpperCase());
+}
+
+// Функция уведомления
+
+function alertFunc(alert) {
+    sitesDiv.innerHTML = '';
+    const siteContainer = document.createElement('div');
+    siteContainer.className = 'site-container';
+    const siteName = document.createElement('p');
+    siteName.className = 'text';
+    siteName.textContent = `${alert}`;
+    siteContainer.append(siteName);
+    sitesDiv.append(siteContainer);
+}
+
 // Функция добавления сайта
 addButton.addEventListener('click', function () {
-    if (addSiteInputName.value && addSiteInputLink.value) {
+    if (addSiteInputName.value && addSiteInputLink.value && !siteAdded()) {
         const newSite = {};
         newSite.name = addSiteInputName.value;
         newSite.link = addSiteInputLink.value;
@@ -122,6 +140,8 @@ addButton.addEventListener('click', function () {
         sitesDiv.innerHTML = '';
         const filteredSites = sites.filter(obj => obj.category === newSite.category);
         showSite(filteredSites);
+    } else if (addSiteInputName.value && addSiteInputLink.value && siteAdded) {
+        alertFunc('Такой сайте уже есть!')
     }
     addSiteInputName.value = '';
     addSiteInputLink.value = '';
@@ -138,19 +158,12 @@ function searchSites() {
     }
     searchInput.value = '';
     if (!found) {
-        sitesDiv.innerHTML = '';
-        const siteContainer = document.createElement('div');
-        siteContainer.className = 'site-container';
-        const siteName = document.createElement('p');
-        siteName.className = 'text';
-        siteName.textContent = 'По вашему запросу ничего не найдено ;('
-        siteContainer.append(siteName);
-        sitesDiv.append(siteContainer);
+        alertFunc('По вашему запросу ничего не найдено ;(');
     }
 };
 
 // Функция чтобы кнопка поиска реагировала на Enter
-searchInput.addEventListener('keydown', function(event) {
+searchInput.addEventListener('keydown', function (event) {
     if (event.key === 'Enter') {
         searchSites();
     }
