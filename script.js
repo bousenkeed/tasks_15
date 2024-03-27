@@ -123,7 +123,6 @@ function displaySites(button, siteArr) {
 }
 
 // Функция уведомления
-
 function alertFunc(alert) {
     sitesDiv.innerHTML = '';
     const siteContainer = document.createElement('div');
@@ -139,7 +138,7 @@ function alertFunc(alert) {
 function siteAdded() {
     return sites.some(site => 
         site.name.toUpperCase() === addSiteInputName.value.toUpperCase() ||
-        site.link.toUpperCase() == addSiteInputLink.value.toUpperCase());
+        site.link.toUpperCase() === addSiteInputLink.value.toUpperCase());
 }
 
 // Функция добавления сайта
